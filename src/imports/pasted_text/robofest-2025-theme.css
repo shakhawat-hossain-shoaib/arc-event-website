@@ -1,0 +1,135 @@
+Update the ENTIRE RoboFest 2025 website with a new global color system across all 17 pages and every component. Apply these changes universally — navbar, footer, buttons, cards, backgrounds, text, icons, badges, inputs, sidebar, admin panel, dashboard, and all sections.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+GREEN COLOR PALETTE (4 tones)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Use only these 4 greens across the entire website. No other green shades allowed.
+
+#344e41 — Deep Forest Green — darkest green. Use for: dark green backgrounds on CTA sections, footer accents, active sidebar items, filled primary buttons in dark mode.
+
+#3a5a40 — Rich Forest Green — Use for: primary filled buttons (default state), active nav item backgrounds, segment card borders on hover, selected states.
+
+#588157 — Mid Sage Green — Use for: secondary accents, icon colors, progress bar fills, badge backgrounds, tag pills, link hover colors, chart fills.
+
+#a3b18a — Soft Sage / Muted Green — Use for: subtle tints on cards, light badge fills, muted accent borders, ghost button border color, decorative lines and dividers with green accent.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DARK MODE THEME
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Primary background: #0A0A0F
+Secondary background (cards, surfaces): #111116
+Tertiary background (nested elements, inputs): #18181f
+Border color: rgba(255,255,255,0.07)
+Border hover: rgba(255,255,255,0.13)
+
+Text primary: #F5F5F0
+Text secondary: #9A9A8E
+Text muted: #5A5A52
+
+Green accent (primary): #588157
+Green accent (strong): #3a5a40
+Green accent (subtle tint): rgba(88,129,87,0.12) — for card tints, active bg
+
+Buttons in dark mode:
+- Primary filled: background #3a5a40, text #F5F5F0, hover background #344e41
+- Ghost/outline: border 1px solid #588157, text #a3b18a, hover background rgba(88,129,87,0.10)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LIGHT MODE THEME
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Primary background: #dad7cd
+Secondary background (cards, surfaces): #FFFFFF
+Tertiary background (nested elements): #F0EDE6
+Border color: rgba(0,0,0,0.08)
+Border hover: rgba(0,0,0,0.15)
+
+Text primary: #1a1a14
+Text secondary: #4a4a40
+Text muted: #8a8a7a
+
+Green accent (primary): #3a5a40
+Green accent (strong): #344e41
+Green accent (subtle tint): rgba(58,90,64,0.08) — for card tints, hover bg
+
+Buttons in light mode:
+- Primary filled: background #3a5a40, text #FFFFFF, hover background #344e41
+- Ghost/outline: border 1px solid #588157, text #344e41, hover background rgba(58,90,64,0.08)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+REMOVE ALL GLOW EFFECTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Remove every single glow, neon, or bloom effect from the entire website:
+- Remove all box-shadow glow on buttons (no rgba green glow on hover)
+- Remove all text-shadow glow on headlines
+- Remove all radial glow blobs in section backgrounds
+- Remove all glowing borders on cards
+- Remove all glow on countdown timer numbers
+- Remove all glow on navbar
+- Remove all glow in carousel center card
+- Remove all glow on QR code card
+- Replace every glow effect with a clean flat border using the green palette instead
+- The only allowed shadow is a subtle flat drop shadow: box-shadow: 0 2px 12px rgba(0,0,0,0.15) on cards for depth — no color in shadows
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SPECIFIC COMPONENT UPDATES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Navbar:
+- Dark mode bg: rgba(10,10,15,0.92) + backdrop blur
+- Light mode bg: rgba(218,215,205,0.92) + backdrop blur
+- Active nav pill bg: rgba(88,129,87,0.15), text #a3b18a in dark / #344e41 in light
+- No border glow — use border-bottom: 1px solid rgba(255,255,255,0.06) in dark
+
+Cards:
+- Dark mode: background #111116, border 1px solid rgba(255,255,255,0.07)
+- Light mode: background #FFFFFF, border 1px solid rgba(0,0,0,0.08)
+- Hover state: border color changes to #588157 — no glow, just clean border color shift
+- No box-shadow glow. Clean flat card surfaces only.
+
+Buttons:
+- Primary: #3a5a40 fill, white text. Hover: #344e41. No glow on hover.
+- Ghost: 1px solid #588157 border, transparent fill. Hover: rgba(88,129,87,0.10) bg tint.
+- All transitions: 200ms ease
+
+Countdown Timer:
+- Numbers: #a3b18a color in dark mode, #3a5a40 in light mode
+- Box: dark surface #18181f in dark / white in light
+- Border: 1px solid rgba(163,177,138,0.30) — no glow
+
+Segment Cards (carousel and grid):
+- Border default: 1px solid rgba(255,255,255,0.07)
+- Border hover/active: 1px solid #588157 — clean, no glow
+- Center carousel card: border 1.5px solid #3a5a40 — no outer glow
+
+Stat ticker/marquee strip:
+- Background: #111116 in dark / #F0EDE6 in light
+- Separator dots: #588157
+
+Section dividers / decorative lines:
+- Use #a3b18a at 30% opacity for thin horizontal rules
+
+Footer:
+- Background: #0d0d12 in dark / #c8c5bb in light (slightly darker than page bg)
+- Border top: 1px solid rgba(255,255,255,0.06)
+
+Admin panel sidebar:
+- Background: #0d0d12 in dark
+- Active item: background rgba(88,129,87,0.15), left border 3px solid #3a5a40
+- Icon color: #588157
+
+Dashboard charts:
+- Bar/line fill: #588157 primary, #a3b18a secondary
+- No neon colors anywhere
+
+Certificate cards:
+- Border accent: 2px solid #3a5a40
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DESIGN PHILOSOPHY — PREMIUM LOOK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- The overall feel should be: dark forest, organic premium, editorial — like a high-end architecture or fashion brand website but for a robotics event.
+- No electric neon. No glows. No flashy effects.
+- Depth is created through: layered surface tones (#0A0A0F base → #111116 cards → #18181f inputs), clean typography scale, and purposeful use of the 4 green tones.
+- Green is used sparingly as an accent — not plastered everywhere. Only on: active states, primary buttons, key borders, important labels.
+- Whitespace is generous. Sections breathe.
+- Apply these exact hex values consistently. Do not introduce any other colors not listed in this prompt.
