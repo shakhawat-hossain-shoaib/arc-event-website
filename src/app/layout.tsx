@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import "@/styles/index.css";
+import "@/styles/fonts.css";
+import "@/styles/tailwind.css";
+import "@/styles/theme.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 
 export const metadata: Metadata = {
