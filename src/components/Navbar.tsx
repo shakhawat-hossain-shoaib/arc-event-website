@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Cpu, X } from 'lucide-react';
 import { Link, useLocation } from '@/lib/router-compat';
-import { useTheme } from 'next-themes';
+import { useResolvedTheme } from '@/hooks/useResolvedTheme';
 import { ThemeSwitch } from './ThemeSwitch';
 import { AnimatedMenuButton } from './AnimatedMenuButton';
 
@@ -13,8 +13,7 @@ export const Navbar = () => {
   const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
   const navRefs = React.useRef<(HTMLAnchorElement | null)[]>([]);
   const location = useLocation();
-  const { theme, setTheme } = useTheme();
-  const isDark = theme === 'dark' || !theme;
+  const { setTheme, isDark } = useResolvedTheme();
 
   useEffect(() => {
     const handleScroll = () => {};

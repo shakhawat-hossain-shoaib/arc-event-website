@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import { motion } from 'motion/react';
-import { useTheme } from 'next-themes';
+import { useResolvedTheme } from '@/hooks/useResolvedTheme';
 
 const stats = [
   "500+ Participants",
@@ -13,8 +13,7 @@ const stats = [
 ];
 
 export const Ticker = () => {
-  const { theme } = useTheme();
-  const isDark = theme === 'dark' || !theme;
+  const { isDark } = useResolvedTheme();
 
   return (
     <div className={`w-full border-y overflow-hidden py-4 ${

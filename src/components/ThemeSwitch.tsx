@@ -1,12 +1,10 @@
 "use client";
 import React from 'react';
 import styled from 'styled-components';
-import { useTheme } from 'next-themes';
+import { useResolvedTheme } from '@/hooks/useResolvedTheme';
 
 export const ThemeSwitch = () => {
-  const { theme, setTheme } = useTheme();
-  // Assume dark is the default or handled externally
-  const isDark = theme === 'dark' || !theme;
+  const { isDark, setTheme } = useResolvedTheme();
 
   const handleToggle = () => {
     setTheme(isDark ? 'light' : 'dark');
