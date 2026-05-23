@@ -87,10 +87,12 @@ export const authOptions: NextAuthOptions = {
             })
           : null;
 
-        session.user.role =
-          currentUser?.role === "admin" && isAdminEmail(session.user.email || "") && currentUser.emailVerified
-            ? "admin"
-            : currentUser?.role || token.role;
+        if (currentUser?.role === "admin") {
+          session.user.role =
+            isAdminEmail(session.user.email || "") && currentUser.emailVerified ? "admin" : "user";
+        } else {
+          session.user.role = currentUser?.role || "user";
+        }
       }
       return session;
     }

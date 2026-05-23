@@ -2,484 +2,346 @@
 
 ## Project Goal
 
-Make the backend ready so that admin panel data can be saved in the database and shown in the user/public pages.
+Make the backend ready.
 
-Admin panel actions must update the database. Public and user pages must read updated data from the database.
+Admin panel theke data add, edit, delete, and upload korle sheta database-e save hobe.
+
+Public page and user panel database theke latest data show korbe.
 
 ## Team Structure
 
 ### Director
 
 - Director: You
-- Main responsibility: Final decision, final approval, priority control
+- Work: Final decision, priority, final approval
 
 ### Assistant Directors
 
-- AD 1: Backend architecture, database design, API security
-- AD 2: Admin workflow, upload system, final quality check
+- AD 1: Complex backend, security, database review
+- AD 2: Complex upload system, QA, release check
 
-### Development Teams
+### Developers
 
-There will be 2 main teams.
+- 3 DE
+- 4 SSE
+- 3 SE
 
-Because there are 3 DEs, 2 DEs will lead the 2 teams, and 1 DE will work as cross-team technical lead.
+There will be 3 teams.
 
-## People Allocation
+Each team will have 1 DE as team lead.
 
-### Team 1: Backend and Database Team
+Each DE will also do development work, not only lead.
 
-Lead:
+There will be no separate cross-team technical lead.
 
-- DE 1
+Cross-team coordination will be handled by the ADs.
 
-Members:
+## Team 1: Auth, Admin Security, and User Access
 
+### Team Members
+
+- Lead and Developer: DE 1
 - SSE 1
-- SSE 2
 - SE 1
-- SE 2
 
-AD Support:
+### AD Support
 
 - AD 1
 
-Main focus:
+### Main Feature
 
-- API routes
-- Database operations
-- Admin-only protection
-- Data validation
+Secure admin access and user access.
 
-### Team 2: Admin Panel and Public Pages Team
+### Work Items
 
-Lead:
+#### DE 1
 
-- DE 2
+- Lead Team 1
+- Build admin API protection helper
+- Make sure all admin APIs check admin session
+- Make sure only verified admin can access admin panel
+- Review auth-related pull requests
 
-Members:
+#### SSE 1
 
+- Update admin layout protection
+- Check old session problem
+- Make sure unverified admin cannot access admin pages
+- Add proper redirect to login page
+
+#### SE 1
+
+- Test login flow
+- Test normal user login
+- Test admin login before verification
+- Test admin login after verification
+- Write simple test notes
+
+### Done When
+
+- Normal user cannot open admin panel
+- Logged-out user cannot open admin panel
+- Admin cannot open admin panel before email verification
+- Verified admin can open admin panel
+- Admin-only APIs are protected
+
+## Team 2: Event Content Backend
+
+### Team Members
+
+- Lead and Developer: DE 2
+- SSE 2
 - SSE 3
-- SSE 4
-- SE 3
-
-AD Support:
-
-- AD 2
-
-Main focus:
-
-- Admin panel forms
-- Public page data loading
-- User dashboard data loading
-- Upload UI
-
-### Cross-Team Technical Lead
-
-Lead:
-
-- DE 3
-
-Main focus:
-
-- Connect Team 1 and Team 2 work
-- Review API contracts
-- Fix integration problems
-- Keep code style consistent
-- Help both teams when blocked
-
-## Work Breakdown
-
-## AD Responsibilities
-
-### AD 1: Backend Architecture and Security
-
-Tasks:
-
-- Finalize API structure
-- Decide request and response format
-- Review Prisma database usage
-- Make sure all admin APIs are protected
-- Make sure normal users cannot access admin APIs
-- Review validation for create, update, and delete actions
-- Review database migration needs
-
-Deliverables:
-
-- API plan
-- Security checklist
-- Review comments before merge
-
-### AD 2: Upload System and Quality
-
-Tasks:
-
-- Decide upload provider
-- Recommended options: Cloudinary or Vercel Blob
-- Define image upload flow
-- Define allowed file types and file size
-- Review admin panel user experience
-- Test full admin-to-public flow
-- Prepare final QA checklist
-
-Deliverables:
-
-- Upload plan
-- QA checklist
-- Final test report
-
-## Team 1 Tasks: Backend and Database
-
-### Task 1: Admin API Protection
-
-Owner:
-
-- SSE 1
-
-Support:
-
-- DE 1
-- AD 1
-
-Work:
-
-- Create helper to check admin session
-- Use this helper in all admin API routes
-- Only admin email from env can access admin APIs
-- Return proper error if user is not admin
-
-Done when:
-
-- Normal user cannot call admin APIs
-- Logged-out user cannot call admin APIs
-- Admin user can call admin APIs
-
-### Task 2: Segment APIs
-
-Owner:
-
-- SSE 2
-
-Support:
-
-- SE 1
-
-Work:
-
-- Create API to list segments
-- Create API to create segment
-- Create API to update segment
-- Create API to delete segment
-- Save segment data in Prisma database
-
-Done when:
-
-- Admin can add segment
-- Admin can edit segment
-- Admin can delete segment
-- Public segment page can get latest segment data
-
-### Task 3: FAQ APIs
-
-Owner:
-
-- SE 1
-
-Support:
-
-- SSE 2
-
-Work:
-
-- Create API to list FAQs
-- Create API to create FAQ
-- Create API to update FAQ
-- Create API to delete FAQ
-- Support display order
-
-Done when:
-
-- Admin can manage FAQs
-- Public FAQ page shows latest FAQs
-
-### Task 4: Sponsor APIs
-
-Owner:
-
 - SE 2
 
-Support:
+### AD Support
 
-- DE 1
+- AD 1
 
-Work:
+### Main Feature
 
-- Create API to list sponsors
-- Create API to create sponsor
-- Create API to update sponsor
-- Create API to delete sponsor
+Admin can manage event data from admin panel.
+
+This team will work on:
+
+- Segments
+- Schedule
+- FAQ
+- Sponsors
+
+### Work Items
+
+#### DE 2
+
+- Lead Team 2
+- Design API route structure
+- Build Segment API
+- Review Schedule, FAQ, and Sponsor APIs
+- Make sure API response format is consistent
+
+#### SSE 2
+
+- Build Schedule API
+- Add create schedule
+- Add update schedule
+- Add delete schedule
+- Link schedule with segment when needed
+
+#### SSE 3
+
+- Build Sponsor API
+- Add create sponsor
+- Add update sponsor
+- Add delete sponsor
 - Support sponsor tier and display order
 
-Done when:
+#### SE 2
 
-- Admin can manage sponsors
-- Public sponsor page shows latest sponsors
+- Build FAQ API
+- Add create FAQ
+- Add update FAQ
+- Add delete FAQ
+- Support FAQ display order
 
-### Task 5: Schedule APIs
+### Done When
 
-Owner:
+- Admin can create, update, and delete segments
+- Admin can create, update, and delete schedule items
+- Admin can create, update, and delete FAQs
+- Admin can create, update, and delete sponsors
+- All data is saved in database
+- APIs reject invalid data
+- APIs reject non-admin users
 
-- SSE 1
+## Team 3: Admin UI, Public Pages, and Upload
 
-Support:
+### Team Members
 
-- SE 2
-
-Work:
-
-- Create API to list schedule items
-- Create API to create schedule item
-- Create API to update schedule item
-- Create API to delete schedule item
-- Link schedule item with segment when needed
-
-Done when:
-
-- Admin can manage schedule
-- Public schedule page shows latest schedule
-
-## Team 2 Tasks: Admin Panel and Public Pages
-
-### Task 1: Admin Segment UI
-
-Owner:
-
-- SSE 3
-
-Support:
-
-- DE 2
-
-Work:
-
-- Replace static segment data with API data
-- Add create segment form
-- Add edit segment form
-- Add delete confirmation
-- Show loading and error states
-
-Done when:
-
-- Admin segment page works with real database data
-
-### Task 2: Admin FAQ UI
-
-Owner:
-
-- SE 3
-
-Support:
-
-- SSE 3
-
-Work:
-
-- Replace static FAQ data with API data
-- Add create FAQ form
-- Add edit FAQ form
-- Add delete confirmation
-- Show loading and error states
-
-Done when:
-
-- Admin FAQ manager works with real database data
-
-### Task 3: Admin Sponsor UI
-
-Owner:
-
+- Lead and Developer: DE 3
 - SSE 4
-
-Support:
-
 - SE 3
 
-Work:
-
-- Replace static sponsor data with API data
-- Add create sponsor form
-- Add edit sponsor form
-- Add delete confirmation
-- Add logo upload field after upload API is ready
-
-Done when:
-
-- Admin sponsor page works with real database data
-
-### Task 4: Admin Schedule UI
-
-Owner:
-
-- SSE 4
-
-Support:
-
-- DE 2
-
-Work:
-
-- Replace static schedule data with API data
-- Add create schedule form
-- Add edit schedule form
-- Add delete confirmation
-- Show segment selector
-
-Done when:
-
-- Admin schedule page works with real database data
-
-### Task 5: Public Pages Data Loading
-
-Owner:
-
-- DE 2
-
-Support:
-
-- SE 3
-
-Work:
-
-- Update public segments page to read from database
-- Update public FAQ page to read from database
-- Update public sponsors page to read from database
-- Update public schedule page to read from database
-
-Done when:
-
-- Admin changes are visible on public pages
-
-## Cross-Team Tasks
-
-### DE 3: Integration Lead
-
-Tasks:
-
-- Keep API route names consistent
-- Share API examples with both teams
-- Make sure frontend request body matches backend validation
-- Review pull requests from both teams
-- Fix conflicts between backend and frontend
-- Help with build errors
-
-Done when:
-
-- Backend and frontend work together without mismatch
-
-## Upload System Work
-
-### Complex Work: Give to AD 2
-
-Owner:
+### AD Support
 
 - AD 2
 
-Support:
+### Main Feature
 
-- DE 3
-- SSE 4
+Connect admin panel with backend and show latest data on public/user pages.
 
-Work:
+This team will work on:
+
+- Admin forms
+- Public data loading
+- Image upload
+- User-facing display
+
+### Work Items
+
+#### DE 3
+
+- Lead Team 3
+- Connect admin segment page with Segment API
+- Connect public segment page with database data
+- Help upload integration
+- Review UI and API integration
+
+#### SSE 4
+
+- Connect admin sponsor page with Sponsor API
+- Add sponsor logo upload UI
+- Connect public sponsor page with database data
+- Show loading and error states
+
+#### SE 3
+
+- Connect admin FAQ page with FAQ API
+- Connect admin schedule page with Schedule API
+- Connect public FAQ page with database data
+- Connect public schedule page with database data
+
+### Done When
+
+- Admin segment changes show on public segment page
+- Admin sponsor changes show on public sponsor page
+- Admin FAQ changes show on public FAQ page
+- Admin schedule changes show on public schedule page
+- Admin upload image shows on public page
+- UI shows loading state
+- UI shows error state
+
+## Complex Work for ADs
+
+## AD 1: Complex Backend and Security
+
+### Work
+
+- Review database schema
+- Review admin API protection
+- Review auth and session security
+- Review Prisma queries
+- Review validation rules
+- Decide if any migration is needed
+- Make sure secrets are not hardcoded
+
+### Must Check
+
+- `ADMIN_EMAIL` and `ADMIN_PASSWORD` only come from environment variables
+- Normal users cannot call admin APIs
+- Public APIs only expose safe data
+- Delete APIs are protected
+- Update APIs are protected
+
+## AD 2: Upload System and Final QA
+
+### Work
 
 - Choose upload provider
-- Add upload API
-- Store uploaded file URL in database
-- Use uploaded image URL in public pages
-- Add file type validation
-- Add file size validation
+- Recommended: Cloudinary or Vercel Blob
+- Design upload flow
+- Add file type rules
+- Add file size rules
+- Check uploaded image display
+- Prepare final QA report
 
-Recommended provider:
+### Must Check
 
-- Cloudinary for easy image management
-- Vercel Blob if the project should stay inside Vercel
-
-Done when:
-
-- Admin can upload sponsor logo or segment image
-- Uploaded image URL is saved in database
+- Admin can upload image
+- Image URL is saved in database
 - Public page shows uploaded image
+- Wrong file type is blocked
+- Large file is blocked
+- Upload secrets are not exposed in frontend
 
-## Priority Order
+## Feature Priority
 
-### Phase 1: Foundation
+### Priority 1: Security
 
-1. Admin API protection
-2. API route structure
-3. Segment API
-4. FAQ API
-5. Sponsor API
-6. Schedule API
+- Admin login
+- Email verification
+- Admin route protection
+- Admin API protection
 
-### Phase 2: Admin Panel
+### Priority 2: Backend APIs
 
-1. Connect admin segment page
-2. Connect admin FAQ page
-3. Connect admin sponsor page
-4. Connect admin schedule page
+- Segment API
+- Schedule API
+- FAQ API
+- Sponsor API
 
-### Phase 3: Public Pages
+### Priority 3: Admin Panel
 
-1. Public segments page reads database
-2. Public FAQ page reads database
-3. Public sponsors page reads database
-4. Public schedule page reads database
+- Segment admin form
+- Schedule admin form
+- FAQ admin form
+- Sponsor admin form
 
-### Phase 4: Upload
+### Priority 4: Public Pages
 
-1. Upload provider setup
-2. Upload API
-3. Admin upload UI
-4. Public image display
+- Public segment page from database
+- Public schedule page from database
+- Public FAQ page from database
+- Public sponsor page from database
 
-### Phase 5: Testing
+### Priority 5: Upload
 
-1. Admin login test
-2. Admin create/edit/delete test
-3. Public page update test
-4. Normal user access test
-5. Build test
-6. Vercel deployment test
+- Upload provider setup
+- Upload API
+- Upload UI
+- Public image display
 
-## Rules for Everyone
+## Simple API Rule
 
-- Do not hardcode admin email or password in code.
-- Use `.env.local` for local secret values.
-- Use Vercel Environment Variables for production secret values.
-- Do not expose password or secret in frontend code.
-- All admin APIs must check admin session.
-- Every create and update API must validate input.
-- Every delete action must have confirmation in UI.
-- Public pages should only read data.
-- Admin pages can create, update, and delete data.
+Every feature should follow this flow:
+
+1. Admin UI sends request to API
+2. API checks admin session
+3. API validates data
+4. API saves data in database
+5. Public page reads latest data from database
+
+## Team Communication Rule
+
+- DE 1 owns security decisions
+- DE 2 owns backend API decisions
+- DE 3 owns frontend integration decisions
+- AD 1 and AD 2 handle cross-team coordination
+- AD 1 gives final approval for backend and security
+- AD 2 gives final approval for upload and QA
+- Director gives final approval for release
+
+## Daily Update Format
+
+Each team should report:
+
+- What was done today
+- What is blocked
+- What will be done next
+- Any help needed from AD or Director
 
 ## Final Acceptance Checklist
 
-- Admin can log in after email verification.
-- Admin can create segment.
-- Admin can edit segment.
-- Admin can delete segment.
-- Admin can create FAQ.
-- Admin can edit FAQ.
-- Admin can delete FAQ.
-- Admin can create sponsor.
-- Admin can edit sponsor.
-- Admin can delete sponsor.
-- Admin can create schedule.
-- Admin can edit schedule.
-- Admin can delete schedule.
-- Admin can upload image.
-- Public pages show latest database data.
-- Normal users cannot open admin panel.
-- Normal users cannot call admin APIs.
-- Production build passes.
-- Vercel deployment works.
-
+- Admin can log in
+- Admin email verification works
+- Unverified admin cannot open admin panel
+- Normal user cannot open admin panel
+- Admin can create segment
+- Admin can edit segment
+- Admin can delete segment
+- Public segment page shows latest data
+- Admin can create schedule
+- Admin can edit schedule
+- Admin can delete schedule
+- Public schedule page shows latest data
+- Admin can create FAQ
+- Admin can edit FAQ
+- Admin can delete FAQ
+- Public FAQ page shows latest data
+- Admin can create sponsor
+- Admin can edit sponsor
+- Admin can delete sponsor
+- Public sponsor page shows latest data
+- Admin can upload image
+- Uploaded image shows on public page
+- Production build passes
+- Vercel deployment works
