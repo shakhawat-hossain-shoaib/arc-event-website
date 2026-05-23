@@ -3,6 +3,7 @@ import "@/styles/fonts.css";
 import "@/styles/tailwind.css";
 import "@/styles/theme.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { AuthProvider } from "@/components/providers/AuthProvider";
 
 export const metadata: Metadata = {
   title: "AUSTRC - RoboFest",
@@ -17,9 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body style={{ margin: 0 }}>
-        <ThemeProvider attribute="class" defaultTheme="dark">
-          {children}
-        </ThemeProvider>
+        <AuthProvider>
+          <ThemeProvider attribute="class" defaultTheme="dark">
+            {children}
+          </ThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   );
